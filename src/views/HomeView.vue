@@ -54,7 +54,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
-          <span class="badge">Trusted by 240+ Global Agencies</span>
+          <!-- <span class="badge">Trusted by 240+ Global Agencies</span> -->
           <h1>Instantly align your team with any <span class="text-accent">brand voice</span></h1>
           <p class="lead">
             Eliminate the risk of off-brand content. Toneload synchronizes your entire writing team so every client gets perfect copy from the very first draft.
