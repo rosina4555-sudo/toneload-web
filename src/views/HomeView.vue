@@ -194,10 +194,16 @@
       <div class="container">
         <div class="footer-top">
           <div class="footer-info">
-            <a class="logo logo-white" href="#">
+            <!-- <a class="logo logo-white" href="#">
               <PhShieldCheck :size="22" weight="fill" class="logo-icon" />
               Toneload
-            </a>
+            </a> -->
+            <div class="footer-logo">
+            <div class="footer-logo-icon">
+              <img src="/images/logo_test1.png" alt="Kweek" class="footer-logo-img" />
+            </div>
+            <span class="footer-logo-name">Toneload</span>
+          </div>
             <p>The standard for agency brand alignment.</p>
           </div>
           <div class="footer-links" v-for="col in footerCols" :key="col.head">
@@ -1057,6 +1063,11 @@ h2.section-title {
   margin-bottom: 16px;
   display: inline-flex;
 }
+
+.footer-logo  { display: flex;  gap: 8px; margin-bottom: 8px; filter: brightness(0) invert(1); }
+.footer-logo-icon { width: 30px; height: 30px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.footer-logo-img  { width: 100%; height: 100%; object-fit: contain; }
+.footer-logo-name { font-size: 20px; font-weight: 600; color: rgba(250,250,249,0.9); letter-spacing: -0.3px; }
 
 .footer-info p {
   color: #8A97AA;
