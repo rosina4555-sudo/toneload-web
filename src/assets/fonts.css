@@ -1,0 +1,33 @@
+/* ── Varnish Fonts ───────────────────────────────────────────────────────────
+   Headings  : Cabinet Grotesk  — via Fontshare CDN (free, no self-hosting needed)
+   Body / UI : Inter            — via Google Fonts (variable font, single file)
+   Mono      : JetBrains Mono   — via Google Fonts (for code/tokens if needed)
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Cabinet Grotesk — display headings */
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@100,200,300,400,500,700,800,900&display=swap');
+
+/* Inter — body & UI (variable font, covers weight 100–900) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* JetBrains Mono — monospace (optional, for code snippets) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+
+/* ── Font feature settings ──────────────────────────────────────────────── */
+
+/* Cabinet Grotesk — enable tabular numbers, disable ligatures in UI */
+.font-display {
+  font-family: 'Cabinet Grotesk', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'ss01' on, 'ss02' on;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Inter — enable numeric tabular figures and standard ligatures */
+.font-body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'tnum' on, 'liga' on, 'calt' on;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
