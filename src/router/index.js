@@ -9,7 +9,7 @@ import HomeView from '@/views/HomeView.vue'
 // import StorefrontLayout from '@/layouts/StorefrontLayout.vue'
 
 // Auth views
-// import LoginView from '@/views/auth/LoginView.vue'
+import SigninView from '@/views/auth/Signin.vue'
 // import RegisterView from '@/views/auth/RegisterView.vue'
 
 // Dashboard views — lazy loaded
@@ -32,29 +32,31 @@ const routes = [
   meta: { title: 'Home | Toneload' },
 },
 
-  // {
-  //   path: '/auth',
-  //   component: AuthLayout,
-  //   // beforeEnter: requireGuest,
-  //   children: [
-  //     {
-  //       path: 'login',
-  //       name: 'Login',
-  //       component: LoginView,
-  //       meta: { title: 'Login — Kweek' },
-  //     },
-  //     {
-  //       path: 'register',
-  //       name: 'Register',
-  //       component: RegisterView,
-  //       meta: { title: 'Create account — Kweek' },
-  //     },
-  //     {
-  //       path: '',
-  //       redirect: { name: 'Login' },
-  //     },
-  //   ],
-  // },
+  {
+    path: '/auth/signin',
+    component: SigninView,
+    name: "signin",
+    // component: AuthLayout,
+    // beforeEnter: requireGuest,
+    // children: [
+    //   {
+    //     path: 'login',
+    //     name: 'Login',
+    //     component: LoginView,
+    //     meta: { title: 'Login — Kweek' },
+    //   },
+    //   {
+    //     path: 'register',
+    //     name: 'Register',
+    //     component: RegisterView,
+    //     meta: { title: 'Create account — Kweek' },
+    //   },
+    //   {
+    //     path: '',
+    //     redirect: { name: 'Login' },
+    //   },
+    // ],
+  },
 
 
 //   {

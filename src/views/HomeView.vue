@@ -9,11 +9,6 @@
           <span class="nav-logo-name">Toneload</span>
           <span class="nav-badge">beta</span>
         </div>
-        <!-- <a class="logo" href="#">
-          <img src="/images/logo_test1.png" alt="Toneload Logo" />
-          Toneload
-        </a> -->
-
         <nav class="nav-links">
           <a href="#how-it-works">Process</a>
           <a href="#features">Features</a>
@@ -70,13 +65,6 @@
             </a>
           </div>
         </div>
-
-        <!-- ── Hero Visual: Motion.dev / GSAP Animation Placeholder ── -->
-        <!-- 
-          ANIMATION RECOMMENDATION:
-          Replace this block with a Motion.dev (or GSAP) animated composition.
-          See the comment block below for specific implementation guidance.
-        -->
         <div class="hero-visual">
           <div class="score-card-stack">
 
@@ -194,10 +182,7 @@
       <div class="container">
         <div class="footer-top">
           <div class="footer-info">
-            <!-- <a class="logo logo-white" href="#">
-              <PhShieldCheck :size="22" weight="fill" class="logo-icon" />
-              Toneload
-            </a> -->
+      
             <div class="footer-logo">
             <div class="footer-logo-icon">
               <img src="/images/logo_test1.png" alt="Kweek" class="footer-logo-img" />
@@ -257,11 +242,6 @@ const footerCols = [
 </script>
 
 <style scoped>
-/* ── Google Font (add to index.html head) ──────────────────────────────────
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-   ──────────────────────────────────────────────────────────────────────── */
-
 .landing {
   --primary: #0066FF;
   --primary-dark: #0047CC;
@@ -1103,51 +1083,3 @@ h2.section-title {
 }
 </style>
 
-<!--
-════════════════════════════════════════════════════════════════════════════════
-  HERO ANIMATION RECOMMENDATION
-════════════════════════════════════════════════════════════════════════════════
-
-  RECOMMENDED: Motion.dev (formerly Framer Motion for the web)
-  Install: npm install motion
-
-  Why Motion.dev?
-  ─────────────────────────────────────────────────────────────────────────────
-  • Works with Vue via the `<Motion>` component or the `motion()` utility
-  • Hardware-accelerated (uses CSS compositor where possible)
-  • Tiny bundle (~18 kB gzip) — much lighter than GSAP for this use case
-  • Spring physics: the chips can "bounce" in with natural feel
-  • Stagger and sequence APIs are dead-simple
-
-  Implementation sketch (replace .score-card-stack div):
-  ─────────────────────────────────────────────────────────────────────────────
-  1. npm install motion
-  2. In <script setup>, import { animate, inView, stagger } from 'motion'
-  3. onMounted(() => {
-       animate('.score-card--main',
-         { opacity: [0, 1], y: [24, 0], scale: [0.95, 1] },
-         { duration: 0.5, easing: [0.22, 1, 0.36, 1] }
-       )
-       animate('.float-chip',
-         { opacity: [0, 1], y: [16, 0] },
-         { delay: stagger(0.15, { start: 0.3 }), duration: 0.4, easing: 'ease-out' }
-       )
-       // Continuously animate the ring fill on mount:
-       animate('.ring-fill',
-         { strokeDashoffset: [314, 28] },
-         { duration: 1.2, delay: 0.4, easing: [0.22, 1, 0.36, 1] }
-       )
-     })
-
-  Alternatively: GSAP (GreenSock)
-  ─────────────────────────────────────────────────────────────────────────────
-  • Better for complex timelines (e.g. sequential card reveals)
-  • ScrollTrigger plugin for scroll-driven entry animations
-  • Larger bundle but industry standard for marketing pages
-  • npm install gsap
-
-  Both are excellent choices. Motion.dev wins on bundle size and Vue DX;
-  GSAP wins on timeline control and ScrollTrigger power.
-
-════════════════════════════════════════════════════════════════════════════════
--->
