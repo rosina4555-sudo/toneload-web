@@ -5,7 +5,7 @@
       <div class="auth-visual">
         <div class="visual-content">
           <a href="/" class="logo white">
-             <img src="/images/logo_test1.png" size="5" weight="fill" class="logo-icon" />
+            <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload Logo" />
             Toneload
           </a>
           <div class="testimonial">
@@ -18,8 +18,8 @@
       <!-- ── Right Side: Form ── -->
       <div class="auth-form-section">
         <div class="form-header-mobile">
-            <img src="/images/logo_test1.png" size="5" weight="fill" class="logo-icon" />
-           <span class="logo-text">Toneload</span>
+          <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload Logo" />
+          <span class="logo-text">Toneload</span>
         </div>
 
         <div class="form-card">
@@ -91,12 +91,11 @@
 
 <script setup>
 import { ref } from 'vue'
-import { PhShieldCheck, PhGoogleLogo, PhEnvelopeSimple, PhLockKey, PhUser } from "@phosphor-icons/vue"
+import { PhGoogleLogo, PhEnvelopeSimple, PhLockKey, PhUser } from "@phosphor-icons/vue"
 
 const isSignUp = ref(false)
 
 const handleAuth = () => {
-  // Logic for Firebase/Supabase/API goes here
   console.log("Form submitted")
 }
 </script>
@@ -123,14 +122,13 @@ const handleAuth = () => {
   width: 100%;
 }
 
-/* ── Responsive Grid ── */
 @media (min-width: 1024px) {
   .auth-container {
     grid-template-columns: 40% 60%;
   }
 }
 
-/* ── Visual Sidebar (Desktop Only) ── */
+/* ── Visual Sidebar (Left Pane) ── */
 .auth-visual {
   display: none;
   background: var(--navy);
@@ -143,7 +141,8 @@ const handleAuth = () => {
   .auth-visual {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* Changed from space-between to flex-start to allow manual spacing */
+    justify-content: flex-start; 
   }
 }
 
@@ -155,14 +154,16 @@ const handleAuth = () => {
   font-weight: 800;
   color: #fff;
   text-decoration: none;
+  /* Pushes the testimonial content down and keeps logo at the top */
+  margin-bottom: 120px; 
 }
-/* .logo-text {
-    color: #fff;
-} */
 
-.logo-icon { width: 50px; height: 50px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-
+.logo-icon { 
+  width: 42px; 
+  height: 42px; 
+  object-fit: contain;
+  flex-shrink: 0; 
+}
 
 .testimonial {
   color: #fff;
@@ -197,7 +198,7 @@ const handleAuth = () => {
 .form-header-mobile {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 40px;
 }
 
@@ -205,7 +206,7 @@ const handleAuth = () => {
   .form-header-mobile { display: none; }
 }
 
-.logo-text { font-weight: 800; font-size: 20px; color: var(--navy); }
+.logo-text { font-weight: 800; font-size: 22px; color: var(--navy); }
 
 .form-card {
   width: 100%;
