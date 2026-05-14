@@ -2,10 +2,17 @@
   <div class="landing">
     <header class="nav" :class="{ scrolled }">
       <div class="container nav-inner">
-        <a class="logo" href="#">
-          <PhShieldCheck :size="28" weight="fill" class="logo-icon" />
+        <div class="nav-logo">
+          <div class="nav-logo-icon">
+            <img src="/images/logo_test1.png" alt="toneload" class="nav-logo-img" />
+          </div>
+          <span class="nav-logo-name">Toneload</span>
+          <span class="nav-badge">beta</span>
+        </div>
+        <!-- <a class="logo" href="#">
+          <img src="/images/logo_test1.png" alt="Toneload Logo" />
           Toneload
-        </a>
+        </a> -->
 
         <nav class="nav-links">
           <a href="#how-it-works">Process</a>
@@ -142,7 +149,7 @@
         </div>
         <div class="steps-container">
           <div class="step-item" v-for="(s, i) in steps" :key="s.title">
-            <div class="step-number-badge">{{ String(i + 1).padStart(2, '0') }}</div>
+            <div class="step-number-badge">{{ String(i + 1) }}</div>
             <div class="step-illustration">
               <img :src="`/images/illustrations/${s.svg}.svg`" :alt="s.title" class="svg-placeholder" />
             </div>
@@ -436,7 +443,7 @@ h2.section-title {
 
 .logo {
   font-weight: 800;
-  font-size: 20px;
+  font-size: 2px;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -444,6 +451,17 @@ h2.section-title {
   text-decoration: none;
   letter-spacing: -0.02em;
   flex-shrink: 0;
+}
+
+.nav-logo {display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.nav-logo-icon { width: 40px; height: 40px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-logo-img  { width: 100%; height: 100%; object-fit: contain; font-size: 24;}
+.nav-logo-name { font-size: 24px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.4px; }
+.nav-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 500;
+  padding: 2px 6px; border-radius: 4px;
+  background: var(--bg-surface); border: 1px solid var(--border);
+  color: var(--text-muted); letter-spacing: 0.3px;
 }
 
 .logo-white { color: #fff !important; }
@@ -813,7 +831,7 @@ h2.section-title {
   background: #fff;
   padding: 36px 32px;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
+  border: 0px solid var(--border);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -830,7 +848,7 @@ h2.section-title {
   justify-content: center;
   width: 56px;
   height: 56px;
-  background: var(--primary-light);
+  /* background: var(--primary-light); */
   border-radius: 12px;
 }
 
@@ -870,7 +888,7 @@ h2.section-title {
   font-weight: 800;
   color: var(--primary);
   background: var(--primary-light);
-  border: 1px solid rgba(0, 102, 255, 0.15);
+  border: 0px solid rgba(0, 102, 255, 0.15);
   border-radius: 20px;
   padding: 4px 12px;
   letter-spacing: 0.08em;
@@ -887,7 +905,7 @@ h2.section-title {
   margin-bottom: 24px;
   overflow: hidden;
   background: var(--primary-light);
-  border: 1px solid rgba(0, 102, 255, 0.1);
+  border: 0px solid rgba(0, 102, 255, 0.1);
 }
 
 .svg-placeholder {
