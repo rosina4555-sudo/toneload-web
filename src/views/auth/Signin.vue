@@ -1,13 +1,84 @@
+<script setup>
+import { ref, reactive, onMounted, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+import { loginSchema, registerSchema } from '@/api/auth'
+import AuthInput from '@/components/ui/AuthInput.vue' 
+
+const router = useRouter()
+const route  = useRoute()
+const auth   = useAuthStore()
+
+const isSignUp = ref(false)
+const loading  = ref(false)
+const showPass = ref(false)
+
+const form = reactive({ fullName: '', email: '', password: '', confirmPassword: '' })
+const errors = reactive({ fullName: '', email: '', password: '', confirmPassword: '', general: '' })
+
+const checkMode = () => {
+  isSignUp.value = route.query.mode === 'signup'
+}
+
+onMounted(checkMode)
+watch(() => route.query.mode, checkMode)
+
+function clearErrors() {
+  Object.keys(errors).forEach(k => errors[k] = '')
+}
+
+async function handleSubmit() {
+  clearErrors();
+  
+  const schema = isSignUp.value ? registerSchema : loginSchema;
+  
+  // 1. Log the result to see the structure of your specific Zod version
+  const result = schema.safeParse(form);
+  console.log("Zod Result Object:", result);
+
+  if (!result.success) {
+    // 2. Try standard Zod 3.x path
+    if (result.error?.errors) {
+      result.error.errors.forEach((e) => {
+        const field = e.path[0];
+        if (field in errors) errors[field] = e.message;
+      });
+    } 
+    // 3. Fallback: Try the "flatten" method if version 4/beta is different
+    else if (result.error?.flatten) {
+      const flattened = result.error.flatten();
+      const fieldErrors = flattened.fieldErrors;
+      for (const field in fieldErrors) {
+        if (field in errors) errors[field] = fieldErrors[field][0];
+      }
+    }
+    return;
+  }
+
+  loading.value = true;
+  try {
+    isSignUp.value ? await auth.register(form) : await auth.login(form);
+    router.push(route.query.redirect || '/dashboard');
+  } catch (err) {
+    errors.general = err.response?.data?.message || 'Authentication failed';
+  } finally {
+    loading.value = false;
+  }
+}
+
+
+</script>
+
 <template>
   <div class="auth-page">
     <div class="auth-container">
-      <!-- ── Left Side: Brand/Visual (Hidden on Mobile) ── -->
+      
       <div class="auth-visual">
         <div class="visual-content">
-          <a href="/" class="logo white">
-            <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload Logo" />
+          <RouterLink to="/" class="logo white">
+            <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload" />
             Toneload
-          </a>
+          </RouterLink>
           <div class="testimonial">
             <p>"The standard for agency brand alignment. We've cut revision cycles by 40%."</p>
             <span>— Sarah Jenkins, Creative Director</span>
@@ -15,10 +86,9 @@
         </div>
       </div>
 
-      <!-- ── Right Side: Form ── -->
       <div class="auth-form-section">
         <div class="form-header-mobile">
-          <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload Logo" />
+          <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload" />
           <span class="logo-text">Toneload</span>
         </div>
 
@@ -28,52 +98,80 @@
             <p>{{ isSignUp ? 'Join 240+ agencies using Toneload.' : 'Enter your details to access your dashboard.' }}</p>
           </div>
 
-          <!-- Social Auth -->
-          <button class="btn-google">
+          <div v-if="errors.general" class="alert-error">
+            <PhWarningCircle :size="18" weight="fill" />
+            {{ errors.general }}
+          </div>
+
+          <button class="btn-google" type="button">
             <PhGoogleLogo :size="20" weight="bold" />
             {{ isSignUp ? 'Sign up with Google' : 'Sign in with Google' }}
           </button>
 
-          <div class="divider">
-            <span>or continue with email</span>
-          </div>
+          <div class="divider"><span>or continue with email</span></div>
 
-          <form @submit.prevent="handleAuth">
-            <div class="input-group" v-if="isSignUp">
-              <label>Full Name</label>
-              <div class="input-wrapper">
-                <PhUser class="input-icon" :size="18" />
-                <input type="text" placeholder="John Doe" required />
-              </div>
-            </div>
+          <form @submit.prevent="handleSubmit" novalidate>
+            <AuthInput 
+              v-if="isSignUp"
+              v-model="form.fullName"
+              label="Full Name"
+              placeholder="John Doe"
+              :icon="PhUser"
+              id="name"
+              :error="errors.fullName"
+            />
 
-            <div class="input-group">
-              <label>Email Address</label>
-              <div class="input-wrapper">
-                <PhEnvelopeSimple class="input-icon" :size="18" />
-                <input type="email" placeholder="name@agency.com" required />
-              </div>
-            </div>
+            <AuthInput 
+              v-model="form.email"
+              label="Email Address"
+              placeholder="name@agency.com"
+              type="email"
+              :icon="PhEnvelopeSimple"
+              id="email"
+              :error="errors.email"
+            />
 
-            <div class="input-group">
-              <div class="label-row">
-                <label>Password</label>
+            <AuthInput 
+              v-model="form.password"
+              label="Password"
+              placeholder="••••••••"
+              :type="showPass ? 'text' : 'password'"
+              :icon="PhLockKey"
+              id="pass"
+              :error="errors.password"
+            >
+              <template #label-right>
                 <a href="#" v-if="!isSignUp" class="forgot-link">Forgot?</a>
-              </div>
-              <div class="input-wrapper">
-                <PhLockKey class="input-icon" :size="18" />
-                <input type="password" placeholder="••••••••" required />
-              </div>
-            </div>
+              </template>
+              <template #input-right>
+                <button type="button" class="toggle-pass" @click="showPass = !showPass">
+                  <PhEye v-if="!showPass" :size="18" />
+                  <PhEyeClosed v-else :size="18" />
+                </button>
+              </template>
+            </AuthInput>
 
-            <button type="submit" class="btn-primary btn-full">
-              {{ isSignUp ? 'Create Account' : 'Sign In' }}
+            <AuthInput 
+              v-if="isSignUp"
+              v-model="form.confirmPassword"
+              label="Confirm Password"
+              placeholder="••••••••"
+              type="password"
+              :icon="PhLockKey"
+              id="confirm"
+              :error="errors.confirmPassword"
+            />
+
+            <button type="submit" class="btn-primary btn-full" :disabled="loading">
+              <span v-if="!loading">{{ isSignUp ? 'Create Account' : 'Sign In' }}</span>
+              <span v-else>Processing...</span>
+              <PhArrowRight v-if="!loading" :size="18" weight="bold" />
             </button>
           </form>
 
           <p class="auth-footer">
             {{ isSignUp ? 'Already have an account?' : "Don't have an account?" }}
-            <button @click="isSignUp = !isSignUp" class="toggle-btn">
+            <button @click="router.push({ query: { mode: isSignUp ? 'login' : 'signup' } })" class="toggle-btn">
               {{ isSignUp ? 'Sign In' : 'Sign Up for Free' }}
             </button>
           </p>
@@ -89,17 +187,6 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import { PhGoogleLogo, PhEnvelopeSimple, PhLockKey, PhUser } from "@phosphor-icons/vue"
-
-const isSignUp = ref(false)
-
-const handleAuth = () => {
-  console.log("Form submitted")
-}
-</script>
-
 <style scoped>
 .auth-page {
   --primary: #0066FF;
@@ -108,6 +195,8 @@ const handleAuth = () => {
   --text-main: #1A1C21;
   --text-muted: #64748B;
   --border: #E2E8F0;
+  --error: #DC2626;
+  --error-bg: #FEF2F2;
   
   min-height: 100vh;
   display: flex;
@@ -128,21 +217,19 @@ const handleAuth = () => {
   }
 }
 
-/* ── Visual Sidebar (Left Pane) ── */
+/* ── Left Sidebar ── */
 .auth-visual {
   display: none;
   background: var(--navy);
   padding: 60px;
   position: relative;
-  overflow: hidden;
 }
 
 @media (min-width: 1024px) {
   .auth-visual {
     display: flex;
     flex-direction: column;
-    /* Changed from space-between to flex-start to allow manual spacing */
-    justify-content: flex-start; 
+    justify-content: flex-start;
   }
 }
 
@@ -154,16 +241,10 @@ const handleAuth = () => {
   font-weight: 800;
   color: #fff;
   text-decoration: none;
-  /* Pushes the testimonial content down and keeps logo at the top */
-  margin-bottom: 120px; 
+  margin-bottom: 120px;
 }
 
-.logo-icon { 
-  width: 42px; 
-  height: 42px; 
-  object-fit: contain;
-  flex-shrink: 0; 
-}
+.logo-icon { width: 42px; height: 42px; object-fit: contain; }
 
 .testimonial {
   color: #fff;
@@ -210,62 +291,27 @@ const handleAuth = () => {
 
 .form-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 }
 
 .form-intro { margin-bottom: 32px; }
 .form-intro h1 { font-size: 28px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
 .form-intro p { color: var(--text-muted); font-size: 15px; }
 
-/* ── Inputs ── */
-.input-group { margin-bottom: 20px; }
-.label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-label { font-size: 14px; font-weight: 600; color: var(--navy); display: block; margin-bottom: 8px; }
-
-.input-wrapper {
-  position: relative;
+.alert-error {
   display: flex;
   align-items: center;
-}
-
-.input-icon {
-  position: absolute;
-  left: 14px;
-  color: var(--text-muted);
-}
-
-input {
-  width: 100%;
-  padding: 12px 12px 12px 42px;
-  border: 1px solid var(--border);
+  gap: 10px;
+  background: var(--error-bg);
+  color: var(--error);
+  padding: 12px;
   border-radius: 8px;
-  font-size: 15px;
-  transition: all 0.2s;
-  outline: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #FCA5A5;
 }
 
-input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
-}
-
-/* ── Buttons ── */
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.2s;
-  margin-top: 12px;
-}
-
-.btn-primary:hover { background: var(--primary-hover); }
-.btn-full { width: 100%; }
-
+/* ── Social Button ── */
 .btn-google {
   width: 100%;
   display: flex;
@@ -277,15 +323,11 @@ input:focus {
   padding: 12px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 15px;
   color: var(--navy);
   cursor: pointer;
-  transition: 0.2s;
+  margin-bottom: 24px;
 }
 
-.btn-google:hover { background: #f8fafc; border-color: #cbd5e1; }
-
-/* ── Utilities ── */
 .divider {
   display: flex;
   align-items: center;
@@ -303,6 +345,26 @@ input:focus {
 
 .divider span { padding: 0 12px; }
 
+/* ── Action Button ── */
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-full { width: 100%; margin-top: 10px; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
 .forgot-link { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 600; }
 
 .auth-footer {
@@ -318,8 +380,6 @@ input:focus {
   color: var(--primary);
   font-weight: 700;
   cursor: pointer;
-  padding: 0;
-  margin-left: 4px;
 }
 
 .form-mini-footer {
@@ -330,6 +390,4 @@ input:focus {
   font-size: 12px;
   color: var(--text-muted);
 }
-
-.form-mini-footer a { color: inherit; text-decoration: none; }
 </style>

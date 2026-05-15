@@ -33,29 +33,12 @@ const routes = [
 },
 
   {
-    path: '/auth/signin',
+    path: '/auth',
     component: SigninView,
-    name: "signin",
-    // component: AuthLayout,
+    name: "Auth",
+ 
     // beforeEnter: requireGuest,
-    // children: [
-    //   {
-    //     path: 'login',
-    //     name: 'Login',
-    //     component: LoginView,
-    //     meta: { title: 'Login — Kweek' },
-    //   },
-    //   {
-    //     path: 'register',
-    //     name: 'Register',
-    //     component: RegisterView,
-    //     meta: { title: 'Create account — Kweek' },
-    //   },
-    //   {
-    //     path: '',
-    //     redirect: { name: 'Login' },
-    //   },
-    // ],
+  
   },
 
 

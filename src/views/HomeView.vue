@@ -16,8 +16,8 @@
         </nav>
 
         <div class="nav-actions">
-          <a href="#" class="nav-signin">Login</a>
-          <a href="#" class="btn-primary btn-sm">Get Started</a>
+          <router-link :to="{ name: 'Auth', query: { mode: 'login' } }" class="nav-signin">Login</router-link>
+          <router-link :to="{ name: 'Auth', query: { mode: 'signup' } }" class="btn-primary btn-sm">Get Started</router-link>
         </div>
 
         <button class="hamburger" @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen" aria-label="Toggle menu">
@@ -71,7 +71,7 @@
             <!-- Main Score Card -->
             <div class="score-card score-card--main">
               <div class="score-card-header">
-                <span class="score-card-brand">Acme Corp</span>
+                <span class="score-card-brand">Corp A</span>
                 <span class="score-pill score-pill--high">On Brand</span>
               </div>
               <div class="score-ring-wrap">
@@ -645,13 +645,13 @@ h2.section-title {
 .score-card {
   background: #fff;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  /* box-shadow: var(--shadow-lg); */
   padding: 28px 28px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  border: 1px solid var(--border);
+  border: 0px solid var(--border);
 }
 
 .score-card--main {
@@ -746,13 +746,13 @@ h2.section-title {
   align-items: center;
   gap: 6px;
   background: #fff;
-  border: 1px solid var(--border);
+  border: 0px solid var(--border);
   border-radius: 20px;
   padding: 7px 13px;
   font-size: 12px;
   font-weight: 600;
   color: var(--text-main);
-  box-shadow: var(--shadow-md);
+  /* box-shadow: var(--shadow-md); */
   white-space: nowrap;
   animation: float-bob 3s ease-in-out infinite;
 }
