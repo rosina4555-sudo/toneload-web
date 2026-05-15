@@ -37,8 +37,8 @@
             </div>
             <div class="mobile-menu-divider"></div>
             <div class="mobile-menu-actions">
-              <a href="#" class="btn-outline btn-full">Login</a>
-              <a href="#" class="btn-primary btn-full">Get Started — Free</a>
+              <router-link :to="{ name: 'Auth', query: { mode: 'login' } }" class="btn-outline btn-full">Login</router-link>
+              <router-link :to="{ name: 'Auth', query: { mode: 'signup' } }" class="btn-primary btn-full">Get Started — Free</router-link>
             </div>
           </div>
         </div>
