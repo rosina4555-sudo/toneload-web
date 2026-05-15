@@ -171,7 +171,7 @@
                 <PhCheckCircle :size="16" weight="fill" class="check-icon" /> {{ f }}
               </li>
             </ul>
-            <a href="#" :class="p.featured ? 'btn-primary btn-full' : 'btn-outline btn-full'">{{ p.cta }}</a>
+            <button :class="p.featured ? 'btn-primary btn-full' : 'btn-outline btn-full'">{{ p.cta }}</button>
           </div>
         </div>
       </div>
@@ -193,7 +193,7 @@
           </div>
           <div class="footer-links" v-for="col in footerCols" :key="col.head">
             <h4>{{ col.head }}</h4>
-            <a v-for="l in col.links" :key="l" href="#">{{ l }}</a>
+            <a v-for="l in col.links" :key="l.url" :href="'#' + l.url">{{ l.name }}</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -236,8 +236,9 @@ const plans = [
 ]
 
 const footerCols = [
-  { head: 'Product', links: ['How it works', 'Features', 'Pricing'] },
-  { head: 'Legal', links: ['Privacy Policy', 'Terms of Service', 'Security'] }
+  { head: 'Product', links: [{name: 'How it works', url: 'how-it-works'}, 
+  {name: 'Features', url: 'features'}, {name: 'Pricing', url: 'pricing'}] },
+  { head: 'Legal', links: [{name: 'Privacy Policy', url: ''}, {name: 'Terms of Service', url: ''}, {name: 'Security', url: ''}] }
 ]
 </script>
 
@@ -322,52 +323,62 @@ h2.section-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px; /* Slightly more gap for better look */
   font-family: inherit;
-  font-weight: 600;
+  font-weight: 700; /* Increased weight for presence */
   border-radius: var(--radius);
   text-decoration: none;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.12s;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
   white-space: nowrap;
-  line-height: 1;
+  line-height: 1.2; /* Better vertical alignment */
 }
 
 .btn-primary:active,
 .btn-outline:active,
 .btn-ghost:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
 
-/* Sizes */
-.btn-sm  { padding: 9px 18px;  font-size: 13.5px; }
-.btn-md  { padding: 12px 22px; font-size: 15px; }
-.btn-lg  { padding: 15px 28px; font-size: 15.5px; }
-.btn-full { width: 100%; }
+/* Updated Sizes: More padding to prevent "slim" look */
+.btn-sm  { padding: 12px 20px; font-size: 14px; }
+.btn-md  { padding: 16px 28px; font-size: 15px; }
+.btn-lg  { padding: 18px 32px; font-size: 16px; }
+
+/* Critical Fix: Full-width buttons (Pricing & Mobile) */
+.btn-full { 
+  width: 100%; 
+  padding: 16px 24px; /* Force a thick height even if size class is missing */
+  display: flex;
+}
 
 /* Primary */
 .btn-primary {
   background: var(--primary);
   color: #fff;
   border-color: var(--primary);
-  box-shadow: 0 1px 3px rgba(0, 102, 255, 0.25), 0 4px 14px rgba(0, 102, 255, 0.2);
+  box-shadow: 0 4px 14px 0 rgba(0, 102, 255, 0.3);
 }
+
 .btn-primary:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
-  box-shadow: 0 2px 6px rgba(0, 102, 255, 0.3), 0 8px 20px rgba(0, 102, 255, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.23);
+  transform: translateY(-1px);
 }
 
-/* Outline */
+/* Outline - Used for Mobile Login */
 .btn-outline {
-  background: transparent;
+  background: #fff;
   color: var(--navy);
   border-color: var(--border);
+  border-width: 1.5px; /* Thicker border looks more premium */
 }
+
 .btn-outline:hover {
   background: var(--bg-gray);
-  border-color: #C8D2E0;
+  border-color: var(--navy);
 }
 
 /* Ghost (hero secondary) */
@@ -552,7 +563,8 @@ h2.section-title {
 .mobile-menu-actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  padding: 8px 16px; /* Added breathing room */
 }
 
 /* Slide-down transition for mobile menu */
@@ -925,20 +937,28 @@ h2.section-title {
   align-items: start;
 }
 
+.price-card .btn-full {
+  margin-top: auto; /* Ensures button stays at bottom */
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+/* Standardizing the Pricing Grid padding for better balance */
 .price-card {
   background: #fff;
-  padding: 36px 32px 32px;
+  padding: 40px 32px; /* Increased top padding */
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: box-shadow 0.2s;
+  transition: all 0.3s ease;
 }
 
 .price-card.featured {
   border: 2px solid var(--primary);
-  box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.07), var(--shadow-md);
+  transform: scale(1.02); /* Makes the featured card pop */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .price-card:hover {
