@@ -4,9 +4,9 @@
       <div class="container nav-inner">
         <div class="nav-logo">
           <div class="nav-logo-icon">
-            <img src="/images/logo_test1.png" alt="toneload" class="nav-logo-img" />
+            <img src="/images/voice_load_logo_web.png" alt="toneload" class="nav-logo-img" />
           </div>
-          <span class="nav-logo-name">Toneload</span>
+          <span class="nav-logo-name">Voiceload</span>
           <span class="nav-badge">beta</span>
         </div>
         <nav class="nav-links">
@@ -116,7 +116,7 @@
       <div class="container">
         <div class="text-center mb-64">
           <h2 class="section-title">End the confusion of client switching</h2>
-          <p class="section-desc">When your writers juggle multiple accounts, tone drifts. Toneload provides the guardrails to keep every word intentional.</p>
+          <p class="section-desc">When your writers juggle multiple accounts, voice drifts. Voiceload provides the guardrails to keep every word intentional.</p>
         </div>
         <div class="feature-cards">
           <div class="card" v-for="p in problems" :key="p.title">
@@ -133,7 +133,7 @@
       <div class="container">
         <div class="text-center mb-64">
           <h2 class="section-title">A simplified workflow for elite teams</h2>
-          <p class="section-desc">From onboarding to delivery, Toneload ensures your agency remains the gold standard for client consistency.</p>
+          <p class="section-desc">From onboarding to delivery, Voiceload ensures your agency remains the gold standard for client consistency.</p>
         </div>
         <div class="steps-container">
           <div class="step-item" v-for="(s, i) in steps" :key="s.title">
@@ -185,9 +185,9 @@
       
             <div class="footer-logo">
             <div class="footer-logo-icon">
-              <img src="/images/logo_test1.png" alt="Kweek" class="footer-logo-img" />
+              <img src="/images/voice_load_logo_web.png" alt="voiceload" class="footer-logo-img" />
             </div>
-            <span class="footer-logo-name">Toneload</span>
+            <span class="footer-logo-name">Voiceload</span>
           </div>
             <p>The standard for agency brand alignment.</p>
           </div>
@@ -197,7 +197,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2026 Toneload Inc. All rights reserved.</p>
+          <p>© 2026 Voiceload Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -451,7 +451,7 @@ h2.section-title {
 }
 
 .nav-logo {display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.nav-logo-icon { width: 40px; height: 40px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-logo-icon { width: 48px; height: 48px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .nav-logo-img  { width: 100%; height: 100%; object-fit: contain; font-size: 24;}
 .nav-logo-name { font-size: 24px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.4px; }
 .nav-badge {
@@ -1065,7 +1065,7 @@ h2.section-title {
 }
 
 .footer-logo  { display: flex;  gap: 8px; margin-bottom: 8px; filter: brightness(0) invert(1); }
-.footer-logo-icon { width: 30px; height: 30px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.footer-logo-icon { width: 38px; height: 38px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .footer-logo-img  { width: 100%; height: 100%; object-fit: contain; }
 .footer-logo-name { font-size: 20px; font-weight: 600; color: rgba(250,250,249,0.9); letter-spacing: -0.3px; }
 

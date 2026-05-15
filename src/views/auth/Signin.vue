@@ -76,8 +76,8 @@ async function handleSubmit() {
       <div class="auth-visual">
         <div class="visual-content">
           <RouterLink to="/" class="logo white">
-            <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload" />
-            Toneload
+            <img src="/images/voice_load_logo_web.png" class="logo-icon" alt="Voiceload" />
+            Voiceload
           </RouterLink>
           <div class="testimonial">
             <p>"The standard for agency brand alignment. We've cut revision cycles by 40%."</p>
@@ -88,14 +88,14 @@ async function handleSubmit() {
 
       <div class="auth-form-section">
         <div class="form-header-mobile">
-          <img src="/images/logo_test1.png" class="logo-icon" alt="Toneload" />
-          <span class="logo-text">Toneload</span>
+          <img src="/images/voice_load_logo_web.png" class="logo-icon" alt="Voiceload" />
+          <span class="logo-text">Voiceload</span>
         </div>
 
         <div class="form-card">
           <div class="form-intro">
             <h1>{{ isSignUp ? 'Create your account' : 'Welcome back' }}</h1>
-            <p>{{ isSignUp ? 'Join 240+ agencies using Toneload.' : 'Enter your details to access your dashboard.' }}</p>
+            <p>{{ isSignUp ? 'Join 240+ agencies using Voiceload.' : 'Enter your details to access your dashboard.' }}</p>
           </div>
 
           <div v-if="errors.general" class="alert-error">
@@ -244,7 +244,7 @@ async function handleSubmit() {
   margin-bottom: 120px;
 }
 
-.logo-icon { width: 42px; height: 42px; object-fit: contain; }
+.logo-icon { width: 54px; height: 54px; object-fit: contain; }
 
 .testimonial {
   color: #fff;

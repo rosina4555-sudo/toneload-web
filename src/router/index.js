@@ -29,7 +29,7 @@ const routes = [
   path: '/',
   name: 'Home',
   component: HomeView,
-  meta: { title: 'Home | Toneload' },
+  meta: { title: 'Home / Voiceload' },
 },
 
   {
@@ -93,7 +93,7 @@ const routes = [
 
   {
     path: '/',
-    redirect: { name: 'Home' },
+    redirect: { name: 'Home / Voiceload' },
   },
 
 //   {
@@ -114,7 +114,7 @@ const router = createRouter({
 
 
 router.afterEach((to) => {
-  document.title = to.meta.title || 'Toneload'
+  document.title = to.meta.title || 'Voiceload'
 })
 
 export default router
