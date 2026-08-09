@@ -29,7 +29,7 @@ const routes = [
   path: '/',
   name: 'Home',
   component: HomeView,
-  meta: { title: 'Home / Voiceload' },
+  meta: { title: 'Home / Brandload' },
 },
 
   {
@@ -93,7 +93,7 @@ const routes = [
 
   {
     path: '/',
-    redirect: { name: 'Home / Voiceload' },
+    redirect: { name: 'Home / Brandload' },
   },
 
 //   {

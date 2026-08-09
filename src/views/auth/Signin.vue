@@ -34,7 +34,7 @@ async function handleSubmit() {
   
   // 1. Log the result to see the structure of your specific Zod version
   const result = schema.safeParse(form);
-  console.log("Zod Result Object:", result);
+  // console.log("Zod Result Object:", result);
 
   if (!result.success) {
     // 2. Try standard Zod 3.x path
@@ -77,7 +77,7 @@ async function handleSubmit() {
         <div class="visual-content">
           <RouterLink to="/" class="logo white">
             <img src="/images/voice_load_logo_web.png" class="logo-icon" alt="Voiceload" />
-            Voiceload
+            Brandload
           </RouterLink>
           <div class="testimonial">
             <p>"The standard for agency brand alignment. We've cut revision cycles by 40%."</p>
@@ -89,13 +89,13 @@ async function handleSubmit() {
       <div class="auth-form-section">
         <div class="form-header-mobile">
           <img src="/images/voice_load_logo_web.png" class="logo-icon" alt="Voiceload" />
-          <span class="logo-text">Voiceload</span>
+          <span class="logo-text">Brandload</span>
         </div>
 
         <div class="form-card">
           <div class="form-intro">
             <h1>{{ isSignUp ? 'Create your account' : 'Welcome back' }}</h1>
-            <p>{{ isSignUp ? 'Join 240+ agencies using Voiceload.' : 'Enter your details to access your dashboard.' }}</p>
+            <p>{{ isSignUp ? 'Join 240+ agencies using Brandload.' : 'Enter your details to access your dashboard.' }}</p>
           </div>
 
           <div v-if="errors.general" class="alert-error">
@@ -103,10 +103,19 @@ async function handleSubmit() {
             {{ errors.general }}
           </div>
 
-          <button class="btn-google" type="button">
+          <!-- <button class="btn-google" type="button">
             <PhGoogleLogo :size="20" weight="bold" />
             {{ isSignUp ? 'Sign up with Google' : 'Sign in with Google' }}
-          </button>
+          </button> -->
+          <button class="btn-google" type="button">
+  <svg class="google-icon" viewBox="0 0 48 48" width="18" height="18">
+    <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+    <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+    <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+    <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+  </svg>
+  {{ isSignUp ? 'Sign up with Google' : 'Sign in with Google' }}
+</button>
 
           <div class="divider"><span>or continue with email</span></div>
 
@@ -319,13 +328,29 @@ async function handleSubmit() {
   justify-content: center;
   gap: 12px;
   background: #fff;
-  border: 1px solid var(--border);
-  padding: 12px;
+  border: 1px solid #dadce0;
+  padding: 10px;
   border-radius: 8px;
-  font-weight: 600;
-  color: var(--navy);
+  font-family: 'Roboto', 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3c4043;
   cursor: pointer;
   margin-bottom: 24px;
+  transition: box-shadow 0.15s, background-color 0.15s;
+}
+
+.btn-google:hover {
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+  background-color: #f8f9fa;
+}
+
+.btn-google:active {
+  background-color: #f1f3f4;
+}
+
+.google-icon {
+  flex-shrink: 0;
 }
 
 .divider {

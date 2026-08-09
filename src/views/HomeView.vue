@@ -6,7 +6,7 @@
           <div class="nav-logo-icon">
             <img src="/images/voice_load_logo_web.png" alt="toneload" class="nav-logo-img" />
           </div>
-          <span class="nav-logo-name">Voiceload</span>
+          <span class="nav-logo-name">Brandload</span>
           <span class="nav-badge">beta</span>
         </div>
         <nav class="nav-links">
@@ -52,7 +52,7 @@
           <!-- <span class="badge">Trusted by 240+ Global Agencies</span> -->
           <h1>Instantly align your team with any <span class="text-accent">brand voice</span></h1>
           <p class="lead">
-            Eliminate the risk of off-brand content. Toneload synchronizes your entire writing team so every client gets perfect copy from the very first draft.
+            Eliminate the risk of off-brand content. Brandload synchronizes your entire writing team so every client gets perfect copy from the very first draft.
           </p>
           <div class="hero-btns">
             <a href="#" class="btn-primary btn-lg">
@@ -116,7 +116,7 @@
       <div class="container">
         <div class="text-center mb-64">
           <h2 class="section-title">End the confusion of client switching</h2>
-          <p class="section-desc">When your writers juggle multiple accounts, voice drifts. Voiceload provides the guardrails to keep every word intentional.</p>
+          <p class="section-desc">When your writers juggle multiple accounts, voice drifts. Brandload provides the guardrails to keep every word intentional.</p>
         </div>
         <div class="feature-cards">
           <div class="card" v-for="p in problems" :key="p.title">
@@ -187,7 +187,7 @@
             <div class="footer-logo-icon">
               <img src="/images/voice_load_logo_web.png" alt="voiceload" class="footer-logo-img" />
             </div>
-            <span class="footer-logo-name">Voiceload</span>
+            <span class="footer-logo-name">Brandload</span>
           </div>
             <p>The standard for agency brand alignment.</p>
           </div>
@@ -197,7 +197,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2026 Voiceload Inc. All rights reserved.</p>
+          <p>© 2026 Brandload Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>
