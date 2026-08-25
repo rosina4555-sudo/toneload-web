@@ -12,7 +12,9 @@
         :key="item.to"
         :to="item.to"
         class="nav-item"
-        :class="{ 'router-link-active': isActive(item) }"
+        :class="{ 'nav-item--active': isActive(item) }"
+        active-class=""
+        exact-active-class=""
       >
         <component :is="item.icon" :size="19" weight="regular" />
         <span>{{ item.label }}</span>
@@ -126,7 +128,7 @@ const planHint = computed(() => ({
   transition: background 0.12s, color 0.12s;
 }
 .nav-item:hover { background: var(--bg-surface); color: var(--text-primary); }
-.nav-item.router-link-active {
+.nav-item.nav-item--active {
   background: var(--bg-dark);
   color: var(--text-on-dark);
 }
