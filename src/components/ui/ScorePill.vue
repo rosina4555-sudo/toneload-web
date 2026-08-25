@@ -23,17 +23,17 @@ const toneClass = computed(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  height: 30px;
-  padding: 0 11px;
+  min-width: 40px;
+  height: 26px;
+  padding: 0 10px;
   border-radius: 999px;
   border: 1px solid transparent;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
-.score-pill--high { background: var(--score-high-bg); border-color: rgba(5, 150, 105, 0.25); color: var(--score-high-text); }
-.score-pill--mid  { background: #fef3c7; border-color: rgba(217, 119, 6, 0.28); color: var(--score-mid-text); }
+.score-pill--high { background: var(--score-high-bg); border-color: rgba(5, 150, 105, 0.2); color: var(--score-high-text); }
+.score-pill--mid  { background: #fef3c7; border-color: rgba(217, 119, 6, 0.22); color: var(--score-mid-text); }
 .score-pill--low  { background: var(--score-low-bg); border-color: var(--error-border); color: var(--score-low-text); }
-.score-pill--none { background: var(--bg-surface); border-color: var(--border); color: var(--text-muted); font-weight: 500; font-size: 12px; }
+.score-pill--none { background: var(--bg-surface); border-color: var(--border); color: var(--text-muted); font-weight: 500; font-size: 11.5px; }
 </style>

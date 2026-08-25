@@ -28,14 +28,18 @@ h1 { font-family: 'Cabinet Grotesk', sans-serif; font-size: 28px; }
 .btn-home {
   display: inline-flex;
   align-items: center;
-  height: 48px;
-  padding: 0 24px;
+  height: 40px;
+  padding: 0 18px;
   margin-top: 24px;
   background: var(--brand);
-  color: var(--text-primary);
-  border-radius: 10px;
+  color: #fff;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.15px;
+  border: 1px solid var(--brand);
+  transition: background 0.14s ease, border-color 0.14s ease;
 }
-.btn-home:hover { background: var(--brand-hover); }
+.btn-home:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
 </style>

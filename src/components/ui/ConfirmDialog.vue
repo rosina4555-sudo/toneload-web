@@ -28,26 +28,32 @@ defineEmits(['confirm', 'cancel'])
 .btn-cancel {
   height: 40px;
   padding: 0 18px;
-  border-radius: 10px;
+  border-radius: 6px;
   border: 1px solid var(--border-strong);
   background: transparent;
   font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
+  transition: background 0.14s ease;
 }
+.btn-cancel:hover { background: var(--bg-surface); }
 .btn-confirm {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   height: 40px;
   padding: 0 18px;
-  border-radius: 10px;
-  border: none;
+  border-radius: 6px;
+  border: 1px solid var(--error-text);
   background: var(--error-text);
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
+  transition: background 0.14s ease, border-color 0.14s ease;
 }
-.btn-confirm:disabled { opacity: 0.6; }
+.btn-confirm:hover:not(:disabled) { background: #b91c1c; border-color: #b91c1c; }
+.btn-confirm:disabled { opacity: 0.45; cursor: not-allowed; }
 .spinner {
   width: 13px; height: 13px;
   border: 2px solid currentColor; border-top-color: transparent;

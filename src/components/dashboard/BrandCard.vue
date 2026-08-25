@@ -55,20 +55,32 @@ const corpusLabel = computed(() =>
   border-radius: 12px;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 .brand-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: var(--border-strong);
-  box-shadow: 0 6px 20px rgba(10, 25, 47, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-.brand-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-h3 { font-size: 17px; letter-spacing: -0.2px; }
+.brand-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
 .brand-desc {
   font-size: 13px;
   color: var(--text-muted);
-  margin-top: 4px;
+  margin-top: 6px;
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -78,7 +90,7 @@ h3 { font-size: 17px; letter-spacing: -0.2px; }
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: auto;   /* pin to card bottom */
+  margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid var(--border);
 }

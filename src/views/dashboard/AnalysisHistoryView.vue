@@ -142,7 +142,8 @@ onMounted(async () => {
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 8px;
+  padding: 16px;
 }
 
 .toolbar {
@@ -151,76 +152,79 @@ onMounted(async () => {
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 .filter-group { display: flex; align-items: center; gap: 10px; }
-.filter-group label { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.filter-group label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
 .filter-group select {
-  height: 40px;
-  padding: 0 12px;
+  height: 34px;
+  padding: 0 10px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--bg-card);
-  font-size: 14px;
+  font-size: 13px;
   font-family: inherit;
   color: var(--text-primary);
   outline: none;
+  transition: border-color 0.14s;
 }
-.summary { display: flex; gap: 8px; font-size: 13.5px; color: var(--text-muted); }
+.filter-group select:hover { border-color: var(--border-strong); }
+.filter-group select:focus { border-color: var(--brand); box-shadow: 0 0 0 2px rgba(0,102,255,0.08); }
+.summary { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); }
 .score-text--high { color: var(--score-high-text); }
 .score-text--mid { color: var(--score-mid-text); }
 .score-text--low { color: var(--score-low-text); }
 
-.history-card { padding: 8px 16px; overflow-x: auto; }
+.history-card { padding: 6px 12px; overflow-x: auto; }
 
-.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .data-table th {
   text-align: left;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
   color: var(--text-disabled);
   padding: 10px 8px;
   border-bottom: 1px solid var(--border);
   white-space: nowrap;
 }
-.data-table td { padding: 12px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.data-table td { padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 .main-row { cursor: pointer; transition: background 0.1s; }
 .main-row:hover { background: var(--bg-page); }
-.expand-cell { width: 26px; color: var(--text-muted); }
+.expand-cell { width: 24px; color: var(--text-muted); }
 .cell-preview {
-  max-width: 300px;
+  max-width: 280px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--text-secondary);
   font-weight: 500;
 }
-.cell-time { color: var(--text-muted); font-size: 12.5px; white-space: nowrap; }
+.cell-time { color: var(--text-muted); font-size: 12px; white-space: nowrap; }
 
 .detail-row td {
   background: var(--bg-page);
   border-bottom: 1px solid var(--border);
 }
-.flag-list { display: flex; flex-direction: column; gap: 10px; padding: 6px 2px 12px; }
+.flag-list { display: flex; flex-direction: column; gap: 8px; padding: 4px 2px 10px; }
 .flag-item {
   border-left: 3px solid var(--error-border);
   background: var(--bg-card);
-  border-radius: 0 10px 10px 0;
-  padding: 11px 14px;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 12px;
 }
-.flag-item.resolved { border-left-color: var(--accent-light); opacity: 0.75; }
-.flag-head { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
-.flag-phrase { color: var(--text-primary); }
-.flag-type { font-size: 12px; color: var(--text-muted); }
-.flag-suggestion { font-size: 13px; color: var(--text-secondary); margin-top: 7px; }
+.flag-item.resolved { border-left-color: var(--accent-light); opacity: 0.7; }
+.flag-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.flag-phrase { color: var(--text-primary); font-size: 13px; }
+.flag-type { font-size: 11.5px; color: var(--text-muted); }
+.flag-suggestion { font-size: 12.5px; color: var(--text-secondary); margin-top: 6px; }
 
-.muted { color: var(--text-muted); font-size: 14px; }
+.muted { color: var(--text-muted); font-size: 13px; }
 
 .skeleton-block {
-  height: 320px;
-  border-radius: 14px;
+  height: 300px;
+  border-radius: 8px;
   background: linear-gradient(90deg, var(--bg-sunken) 25%, var(--bg-surface) 50%, var(--bg-sunken) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;

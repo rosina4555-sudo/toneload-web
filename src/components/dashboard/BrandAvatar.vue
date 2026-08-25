@@ -44,16 +44,15 @@ const gradient = computed(() => {
 .brand-avatar {
   display: inline-grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 50%;
   color: #fff;
   font-family: 'Cabinet Grotesk', sans-serif;
   font-weight: 700;
   letter-spacing: 0.3px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 8px rgba(10, 25, 47, 0.14);
   flex-shrink: 0;
   user-select: none;
 }
 
 .size-sm { width: 40px; height: 40px; font-size: 14px; }
-.size-lg { width: 56px; height: 56px; font-size: 19px; border-radius: 14px; }
+.size-lg { width: 56px; height: 56px; font-size: 19px; }
 </style>

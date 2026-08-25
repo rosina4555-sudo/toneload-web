@@ -13,29 +13,24 @@ defineProps({
 </script>
 
 <style scoped>
-/*
- * Vercel-style status pill: one quiet neutral surface for every state,
- * state communicated through a small colored dot and a tinted label —
- * never through a loud filled chip.
- */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 22px;
+  height: 20px;
   padding: 0 10px;
   border-radius: 999px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.1px;
   white-space: nowrap;
 }
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   flex-shrink: 0;
 }

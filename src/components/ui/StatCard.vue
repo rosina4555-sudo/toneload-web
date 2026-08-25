@@ -28,33 +28,33 @@ defineProps({
 .stat-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px;
+  border-radius: 8px;
+  padding: 16px;
 }
 .stat-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.stat-label { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+.stat-label { font-size: 12px; font-weight: 500; color: var(--text-muted); }
 .stat-icon {
   display: grid; place-items: center;
-  width: 34px; height: 34px;
-  border-radius: 10px;
+  width: 32px; height: 32px;
+  border-radius: 8px;
   background: var(--brand-light);
   color: var(--brand-text);
 }
-.stat-value { font-size: 30px; font-weight: 700; margin-top: 10px; letter-spacing: -0.5px; }
-.stat-suffix { font-size: 14px; font-weight: 500; color: var(--text-muted); }
-.stat-hint { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; }
+.stat-value { font-size: 26px; font-weight: 700; margin-top: 8px; letter-spacing: -0.4px; }
+.stat-suffix { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+.stat-hint { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
 
 .skeleton {
   display: inline-block;
   background: linear-gradient(90deg, var(--bg-sunken) 25%, var(--bg-surface) 50%, var(--bg-sunken) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
-  border-radius: 8px;
+  border-radius: 6px;
 }
-.value-skeleton { width: 72px; height: 30px; }
+.value-skeleton { width: 60px; height: 26px; }
 @keyframes shimmer { to { background-position: -200% 0; } }
 </style>

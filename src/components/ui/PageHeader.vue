@@ -24,9 +24,9 @@ defineProps({
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
-h1 { font-size: 26px; letter-spacing: -0.3px; }
-p { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
-.page-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.2px; }
+p { color: var(--text-muted); font-size: 13px; margin-top: 3px; }
+.page-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 </style>

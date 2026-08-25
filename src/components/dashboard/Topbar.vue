@@ -1,5 +1,9 @@
 <template>
   <header class="topbar">
+    <RouterLink to="/" class="home-btn" aria-label="Back to home">
+      <PhHouse :size="20" weight="bold" />
+    </RouterLink>
+
     <button class="menu-btn" aria-label="Toggle menu" @click="$emit('toggle-sidebar')">
       <PhList :size="22" weight="bold" />
     </button>
@@ -9,7 +13,7 @@
     <div class="topbar-right">
       <RouterLink to="/dashboard/brands/new" class="new-brand-btn">
         <PhPlus :size="16" weight="bold" />
-        New Brand
+        <span>New Brand</span>
       </RouterLink>
 
       <div ref="menuRef" class="user-menu" @click="open = !open">
@@ -43,7 +47,7 @@
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
-import { PhList, PhPlus, PhCaretDown, PhGearSix, PhCreditCard, PhSignOut } from '@phosphor-icons/vue'
+import { PhList, PhPlus, PhCaretDown, PhGearSix, PhCreditCard, PhSignOut, PhHouse } from '@phosphor-icons/vue'
 
 defineEmits(['toggle-sidebar'])
 
@@ -99,6 +103,19 @@ async function signOut() {
   background: var(--bg-page);
   border-bottom: 1px solid var(--border);
 }
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background 0.14s, color 0.14s;
+  flex-shrink: 0;
+}
+.home-btn:hover { background: var(--bg-surface); color: var(--text-primary); }
 .menu-btn {
   display: none;
   border: none;
@@ -118,15 +135,17 @@ async function signOut() {
   gap: 7px;
   height: 38px;
   padding: 0 16px;
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--brand);
-  color: var(--text-primary);
+  color: #fff;
   text-decoration: none;
   font-size: 13.5px;
-  font-weight: 600;
-  transition: background 0.15s;
+  font-weight: 500;
+  letter-spacing: -0.15px;
+  border: 1px solid var(--brand);
+  transition: background 0.14s ease, border-color 0.14s ease;
 }
-.new-brand-btn:hover { background: var(--brand-hover); }
+.new-brand-btn:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
 
 .user-menu { position: relative; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px; border-radius: 10px; }
 .user-menu:hover { background: var(--bg-surface); }
@@ -134,10 +153,10 @@ async function signOut() {
   display: grid; place-items: center;
   width: 34px; height: 34px;
   border-radius: 50%;
-  background: var(--accent-light);
-  color: var(--accent-text);
+  background: var(--brand-light);
+  color: var(--brand-text);
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .user-name { font-size: 14px; font-weight: 500; }
 
@@ -149,7 +168,7 @@ async function signOut() {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  box-shadow: 0 16px 40px rgba(10, 25, 47, 0.15);
+  box-shadow: 0 16px 40px rgba(10, 25, 47, 0.12);
   overflow: hidden;
   z-index: 100;
 }

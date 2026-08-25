@@ -1,8 +1,13 @@
 <template>
   <nav class="sidebar-nav">
-    <RouterLink to="/dashboard" class="brand-row">
+    <RouterLink to="/" class="brand-row">
       <img src="/images/voice_load_logo_web.png" alt="Brandload" class="brand-logo" />
       <span class="brand-name font-display">Brandload</span>
+    </RouterLink>
+
+    <RouterLink to="/" class="nav-home">
+      <PhHouse :size="17" weight="regular" />
+      <span>Home</span>
     </RouterLink>
 
     <div class="nav-section">
@@ -43,6 +48,7 @@ import {
   PhUsersThree,
   PhCreditCard,
   PhGearSix,
+  PhHouse,
 } from '@phosphor-icons/vue'
 
 const route = useRoute()
@@ -105,6 +111,21 @@ const planHint = computed(() => ({
 .brand-logo { width: 28px; height: 28px; border-radius: 7px; object-fit: cover; }
 .brand-name { font-size: 18px; font-weight: 700; color: var(--text-primary); }
 
+.nav-home {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.12s, color 0.12s;
+  margin-bottom: 4px;
+}
+.nav-home:hover { background: var(--bg-surface); color: var(--text-primary); }
+
 .nav-section { display: flex; flex-direction: column; gap: 2px; flex: 1; }
 .nav-section-label {
   font-size: 11px;
@@ -121,7 +142,7 @@ const planHint = computed(() => ({
   align-items: center;
   gap: 11px;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 14px;
@@ -130,16 +151,16 @@ const planHint = computed(() => ({
 }
 .nav-item:hover { background: var(--bg-surface); color: var(--text-primary); }
 .nav-item.nav-item--active {
-  background: var(--brand);
-  color: #fff;
+  background: var(--brand-light);
+  color: var(--brand-text);
 }
-.nav-item.nav-item--active:hover { background: var(--brand-hover); color: #fff; }
+.nav-item.nav-item--active:hover { background: #d6e8ff; color: var(--brand-text); }
 .nav-badge {
   margin-left: auto;
   font-size: 10.5px;
   font-weight: 600;
   background: var(--brand);
-  color: var(--text-primary);
+  color: #fff;
   border-radius: 999px;
   padding: 2px 8px;
 }

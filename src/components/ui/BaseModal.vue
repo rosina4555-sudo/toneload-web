@@ -61,8 +61,9 @@ onBeforeUnmount(() => {
   max-height: calc(100vh - 40px);
   overflow-y: auto;
   background: var(--bg-card);
-  border-radius: 16px;
-  box-shadow: 0 24px 64px rgba(10, 25, 47, 0.25);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 48px rgba(10, 25, 47, 0.18);
 }
 .modal-card.narrow { width: min(420px, 100%); }
 
@@ -70,31 +71,32 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px 0;
+  padding: 18px 20px 0;
 }
-.modal-header h2 { font-size: 20px; }
+.modal-header h2 { font-size: 17px; font-weight: 600; letter-spacing: -0.1px; }
 .close-btn {
   border: none;
   background: none;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1;
   color: var(--text-muted);
   cursor: pointer;
   padding: 4px 8px;
-  border-radius: 8px;
+  border-radius: 6px;
+  transition: background 0.14s, color 0.14s;
 }
 .close-btn:hover { background: var(--bg-surface); color: var(--text-primary); }
 
-.modal-body { padding: 16px 24px 24px; }
+.modal-body { padding: 14px 20px 20px; }
 .modal-footer {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  padding: 0 24px 24px;
+  padding: 0 20px 20px;
 }
 
 .modal-enter-active, .modal-leave-active { transition: opacity 0.18s ease; }
 .modal-enter-active .modal-card, .modal-leave-active .modal-card { transition: transform 0.18s ease; }
 .modal-enter-from, .modal-leave-to { opacity: 0; }
-.modal-enter-from .modal-card, .modal-leave-to .modal-card { transform: translateY(12px) scale(0.98); }
+.modal-enter-from .modal-card, .modal-leave-to .modal-card { transform: translateY(10px) scale(0.98); }
 </style>

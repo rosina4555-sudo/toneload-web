@@ -3,7 +3,7 @@
     <PageHeader title="Brands" subtitle="Every client voice your team writes for.">
       <template #actions>
         <RouterLink to="/dashboard/brands/new" class="btn-new">
-          <PhPlus :size="16" weight="bold" /> New Brand
+          <PhPlus :size="16" weight="bold" /><span>New Brand</span>
         </RouterLink>
       </template>
     </PageHeader>
@@ -67,18 +67,27 @@ onMounted(() => store.fetchList())
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  height: 42px;
+  height: 40px;
   padding: 0 18px;
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--brand);
-  color: var(--text-primary);
+  color: #fff;
   text-decoration: none;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.15px;
+  border: 1px solid var(--brand);
+  transition: background 0.14s ease, border-color 0.14s ease;
 }
-.btn-new:hover { background: var(--brand-hover); }
+.btn-new:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
+.btn-new span { display: inline; }
 
-.toolbar { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+@media (max-width: 520px) {
+  .btn-new span { display: none; }
+  .btn-new { width: 40px; padding: 0; justify-content: center; }
+}
+
+.toolbar { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
 .search-wrap {
   display: flex;
   align-items: center;

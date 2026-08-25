@@ -22,22 +22,33 @@ defineProps({
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 56px 24px;
-  border: 1.5px dashed var(--border-strong);
-  border-radius: 16px;
+  padding: 48px 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
   background: var(--bg-card);
 }
 .empty-icon {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
   background: var(--brand-light);
   color: var(--brand-text);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
-h3 { font-family: 'Cabinet Grotesk', sans-serif; font-size: 19px; }
-p { color: var(--text-muted); font-size: 14px; margin-top: 6px; max-width: 420px; }
-.empty-action { margin-top: 20px; }
+h3 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+}
+p {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 5px;
+  max-width: 380px;
+  line-height: 1.5;
+}
+.empty-action { margin-top: 16px; }
 </style>
