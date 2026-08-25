@@ -81,6 +81,7 @@ import { computed, ref, onMounted } from 'vue'
 import { dashboardApi } from '@/api/dashboard'
 import { useAuthStore } from '@/stores/auth'
 import StatCard from '@/components/ui/StatCard.vue'
+import { timeAgo } from '@/utils/format'
 import {
   PhTag,
   PhBuildings,

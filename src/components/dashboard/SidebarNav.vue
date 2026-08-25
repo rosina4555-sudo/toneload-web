@@ -48,7 +48,9 @@ const brandsStore = useBrandsStore()
 
 const items = computed(() => {
   const base = [
-    { to: '/dashboard', label: 'Overview', icon: PhSquaresFour, match: ['/dashboard'] },
+    // Overview matches exactly — otherwise every /dashboard/* child route
+    // would keep its indicator lit.
+    { to: '/dashboard', label: 'Overview', icon: PhSquaresFour, match: ['/dashboard'], exact: true },
     { to: '/dashboard/brands', label: 'Brands', icon: PhTag, match: ['/dashboard/brands'] },
     { to: '/dashboard/analysis', label: 'Scoring History', icon: PhChartLine, match: ['/dashboard/analysis'] },
   ]
@@ -67,7 +69,9 @@ const items = computed(() => {
 })
 
 function isActive(item) {
-  return item.match.some((m) => route.path === m || route.path.startsWith(m + '/'))
+  return item.match.some((m) =>
+    item.exact ? route.path === m : route.path === m || route.path.startsWith(m + '/'),
+  )
 }
 
 const planName = computed(() => {
