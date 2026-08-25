@@ -45,7 +45,7 @@ export const useAuthStore = defineStore('auth', () => {
       // Even if server call fails, clear client session
     } finally {
       clearSession()
-      router.push({ name: 'Login' })
+      router.push({ name: 'Auth', query: { mode: 'login' } })
     }
   }
 
@@ -59,9 +59,9 @@ export const useAuthStore = defineStore('auth', () => {
       setSession(access_token, userData)
       return access_token
     } catch {
-      // Refresh token expired or invalid — force logout
+      // Refresh token expired or invalid — clear the client session only.
+      // Redirecting is handled by the router guards.
       clearSession()
-      router.push({ name: 'Login' })
       return null
     } finally {
       isRefreshing.value = false
