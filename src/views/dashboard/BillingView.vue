@@ -172,7 +172,7 @@ onMounted(async () => {
 .meter-fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), #3aa396);
+  background: linear-gradient(90deg, var(--accent), #34d399);
   transition: width 0.4s ease;
 }
 
@@ -193,7 +193,7 @@ onMounted(async () => {
   border: 1px solid var(--border);
   border-radius: 16px;
 }
-.plan-card--popular { border-color: var(--brand); box-shadow: 0 8px 28px rgba(245, 166, 35, 0.14); }
+.plan-card--popular { border-color: var(--brand); box-shadow: 0 8px 28px rgba(0, 102, 255, 0.14); }
 .plan-head { display: flex; justify-content: space-between; align-items: center; }
 .plan-head h4 { font-family: 'Cabinet Grotesk', sans-serif; font-size: 17px; }
 .price { margin-top: 10px; }

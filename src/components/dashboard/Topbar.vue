@@ -149,7 +149,7 @@ async function signOut() {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  box-shadow: 0 16px 40px rgba(26, 24, 20, 0.15);
+  box-shadow: 0 16px 40px rgba(10, 25, 47, 0.15);
   overflow: hidden;
   z-index: 100;
 }

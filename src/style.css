@@ -2,59 +2,61 @@
 @import 'tailwindcss';
 
 
-/* ── Varnish design tokens ───────────────────────────────────────────────── */
+/* ── Brandload design tokens ───────────────────────────────────────────── */
+/* Single source of truth — mirrors the palette used by the marketing site  */
+/* (HomeView) and auth pages so every area of the app stays uniform.        */
 :root {
 
-  /* ── Backgrounds ─────────────────────────────────────────────────────── */
-  --bg-page:    #F7F5F2;   /* warm off-white — the whole page sits here       */
-  --bg-surface: #EFECE8;   /* slightly deeper for section blocks               */
-  --bg-card:    #FFFFFF;   /* pure white cards                                 */
-  --bg-sunken:  #E2DDD6;   /* inputs, recessed areas                           */
-  --bg-dark:    #1A1814;   /* hero section, footer — ink background            */
-  --bg-dark-surface: #252320; /* cards/surfaces on dark bg                    */
+  /* ── Backgrounds ──────────────────────────────────────────────────── */
+  --bg-page:    #F6F8FB;   /* cool off-white — the whole page sits here     */
+  --bg-surface: #EEF2F7;   /* slightly deeper for section blocks            */
+  --bg-card:    #FFFFFF;   /* pure white cards                              */
+  --bg-sunken:  #E9EDF3;   /* inputs, recessed areas                        */
+  --bg-dark:    #0A192F;   /* hero, footer, sidebar active — navy           */
+  --bg-dark-surface: #112240; /* cards/surfaces on dark bg                   */
 
-  /* ── Text ────────────────────────────────────────────────────────────── */
-  --text-primary:   #1A1814;   /* near-black with warm undertone               */
-  --text-secondary: #3D3A35;   /* secondary copy                               */
-  --text-muted:     #6B6860;   /* captions, metadata                           */
-  --text-disabled:  #B0ADA8;   /* placeholder, disabled states                 */
+  /* ── Text ─────────────────────────────────────────────────────────── */
+  --text-primary:   #1A1C21;   /* near-black with cool undertone            */
+  --text-secondary: #33415C;   /* secondary copy                            */
+  --text-muted:     #5A6478;   /* captions, metadata                        */
+  --text-disabled:  #94A3B8;   /* placeholder, disabled states              */
 
   /* inverted — for use on dark backgrounds */
-  --text-on-dark:          #F7F5F2;
-  --text-on-dark-secondary:#A09D98;
-  --text-on-dark-muted:    #6B6860;
+  --text-on-dark:          #F6F8FB;
+  --text-on-dark-secondary:#A9B6C9;
+  --text-on-dark-muted:    #5A6B80;
 
-  /* ── Brand — Varnish Amber ───────────────────────────────────────────── */
-  --brand:         #F5A623;   /* primary CTA, highlights                       */
-  --brand-hover:   #C4821A;   /* button hover state                            */
-  --brand-light:   #FFF8ED;   /* subtle tint backgrounds                       */
-  --brand-text:    #7A4E0D;   /* text on brand-light backgrounds               */
+  /* ── Brand — Marketing Blue ───────────────────────────────────────── */
+  --brand:         #0066FF;   /* primary CTA, highlights                     */
+  --brand-hover:   #0047CC;   /* button hover state                          */
+  --brand-light:   #EBF3FF;   /* subtle tint backgrounds                     */
+  --brand-text:    #0047CC;   /* text on brand-light backgrounds             */
 
-  /* ── Accent — Slate Teal ─────────────────────────────────────────────── */
-  --accent:        #2A8A7E;   /* active states, links, badges                  */
-  --accent-hover:  #1A5C55;
-  --accent-light:  #EAF5F3;
-  --accent-text:   #1A5C55;   /* text on accent-light backgrounds              */
+  /* ── Accent — Success Green ───────────────────────────────────────── */
+  --accent:        #10B981;   /* live indicators, positive states            */
+  --accent-hover:  #059669;
+  --accent-light:  #D1FAE5;
+  --accent-text:   #065F46;   /* text on accent-light backgrounds            */
 
-  /* ── Borders ─────────────────────────────────────────────────────────── */
-  --border:        #E2DDD6;   /* default border                                */
-  --border-strong: #C9C4BC;   /* hover, focused borders                        */
-  --border-dark:   rgba(255,255,255,0.10);  /* on dark backgrounds             */
+  /* ── Borders ──────────────────────────────────────────────────────── */
+  --border:        #E4E9F0;   /* default border                              */
+  --border-strong: #C8D2E0;   /* hover, focused borders                      */
+  --border-dark:   rgba(255,255,255,0.10);  /* on dark backgrounds           */
 
-  /* ── Score / Status ──────────────────────────────────────────────────── */
-  --score-high-bg:   #EAF5F3;
-  --score-high-text: #1A5C55;
-  --score-mid-bg:    #FFF8ED;
-  --score-mid-text:  #7A4E0D;
-  --score-low-bg:    #FEF0F0;
+  /* ── Score / Status ───────────────────────────────────────────────── */
+  --score-high-bg:   #D1FAE5;
+  --score-high-text: #065F46;
+  --score-mid-bg:    #FEF3C7;
+  --score-mid-text:  #92400E;
+  --score-low-bg:    #FEE2E2;
   --score-low-text:  #991B1B;
 
-  /* ── Feedback ────────────────────────────────────────────────────────── */
-  --error-bg:     #FEF0F0;
-  --error-text:   #B91C1C;
-  --error-border: #FECACA;
-  --success-bg:   #EAF5F3;
-  --success-text: #1A5C55;
+  /* ── Feedback ─────────────────────────────────────────────────────── */
+  --error-bg:     #FEF2F2;
+  --error-text:   #DC2626;
+  --error-border: #FCA5A5;
+  --success-bg:   #D1FAE5;
+  --success-text: #065F46;
 }
 
 
@@ -130,8 +132,8 @@ body {
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .v-input:focus {
-  border-color: var(--border-strong);
-  box-shadow: 0 0 0 3px rgba(245,166,35,0.12);
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(0,102,255,0.12);
 }
 .v-input::placeholder { color: var(--text-disabled); }
 
@@ -145,7 +147,7 @@ body {
   height: 52px;
   padding: 0 28px;
   background: var(--brand);
-  color: var(--text-primary);
+  color: var(--text-on-dark);
   font-size: 15px;
   font-weight: 600;
   font-family: 'Cabinet Grotesk', sans-serif;
@@ -158,6 +160,7 @@ body {
 }
 .v-btn:hover:not(:disabled) {
   background: var(--brand-hover);
+  color: var(--text-on-dark);
 }
 .v-btn:active:not(:disabled) { transform: scale(0.98); }
 .v-btn:disabled { opacity: 0.45; cursor: not-allowed; }

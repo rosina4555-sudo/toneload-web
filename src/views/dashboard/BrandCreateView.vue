@@ -225,7 +225,7 @@ async function submit() {
 }
 .field input:focus, .field textarea:focus, .field select:focus {
   border-color: var(--border-strong);
-  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.12);
 }
 .field textarea { resize: vertical; }
 .field-error { color: var(--error-text); font-size: 12.5px; margin-top: 6px; display: block; }

@@ -62,7 +62,7 @@ const corpusLabel = computed(() =>
 .brand-card:hover {
   transform: translateY(-2px);
   border-color: var(--border-strong);
-  box-shadow: 0 10px 28px rgba(26, 24, 20, 0.08);
+  box-shadow: 0 10px 28px rgba(10, 25, 47, 0.08);
 }
 
 .brand-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }

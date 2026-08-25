@@ -238,7 +238,7 @@ onMounted(() => {
   font-family: inherit;
   outline: none;
 }
-.field input:focus { border-color: var(--border-strong); box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.12); }
+.field input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.12); }
 
 .form-actions { display: flex; justify-content: flex-end; }
 
@@ -253,7 +253,7 @@ onMounted(() => {
   border-radius: 10px;
   overflow-x: auto;
 }
-.token-box code { color: #d9f99d; white-space: nowrap; }
+.token-box code { color: var(--text-on-dark-secondary); white-space: nowrap; }
 .token-actions { display: flex; gap: 10px; margin-left: auto; flex-shrink: 0; }
 
 .link-btn {

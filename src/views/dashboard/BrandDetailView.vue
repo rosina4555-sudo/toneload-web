@@ -761,7 +761,7 @@ async function copyShareLink() {
   font-weight: 600;
   cursor: pointer;
 }
-.btn-revoke:hover { background: #fde2e2; }
+.btn-revoke:hover { background: var(--error-bg); }
 
 .muted { color: var(--text-muted); font-size: 14px; }
 

@@ -24,7 +24,7 @@ defineProps({
 .dim-fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--brand), #f6c05a);
+  background: linear-gradient(90deg, var(--brand), #4d94ff);
   transition: width 0.4s ease;
 }
 </style>
