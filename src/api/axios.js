@@ -1,11 +1,17 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
+import { isMockEnabled, mockAdapter } from './mock'
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000',
   withCredentials: true,
   timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
+
+  // While VITE_USE_MOCK !== 'false', every request is answered by the seeded
+  // in-memory mock instead of hitting the network. Set the env var to 'false'
+  // once the real Brandload API ships — nothing else changes.
+  ...(isMockEnabled() ? { adapter: mockAdapter } : {}),
 })
 
 // Request interceptor, attach access token
