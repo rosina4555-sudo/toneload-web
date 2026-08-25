@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(26, 24, 20, 0.5);
+  background: rgba(10, 25, 47, 0.5);
   backdrop-filter: blur(2px);
 }
 .modal-card {
@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
   overflow-y: auto;
   background: var(--bg-card);
   border-radius: 16px;
-  box-shadow: 0 24px 64px rgba(26, 24, 20, 0.25);
+  box-shadow: 0 24px 64px rgba(10, 25, 47, 0.25);
 }
 .modal-card.narrow { width: min(420px, 100%); }
 

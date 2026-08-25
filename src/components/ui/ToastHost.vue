@@ -39,12 +39,12 @@ const { toasts, dismiss } = useToast()
   color: var(--text-on-dark);
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 12px 32px rgba(26, 24, 20, 0.3);
+  box-shadow: 0 12px 32px rgba(10, 25, 47, 0.3);
   cursor: pointer;
 }
 .toast-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.toast--success .toast-dot { background: #34d399; }
-.toast--error   .toast-dot { background: #f87171; }
+.toast--success .toast-dot { background: var(--accent); }
+.toast--error   .toast-dot { background: var(--error-text); }
 .toast--info    .toast-dot { background: var(--brand); }
 
 .toast-enter-active, .toast-leave-active { transition: all 0.25s ease; }
