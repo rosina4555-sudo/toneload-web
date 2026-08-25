@@ -5,7 +5,7 @@
       <RouterLink to="/dashboard/brands" class="back-link"><PhArrowLeft :size="15" weight="bold" /> All brands</RouterLink>
 
       <div class="brand-title-row">
-        <div class="brand-avatar font-display">{{ initials }}</div>
+        <BrandAvatar :name="brand.name" size="lg" />
         <div class="brand-title">
           <h1>{{ brand.name }}</h1>
           <div class="brand-sub">
@@ -240,6 +240,7 @@ import ScorePill from '@/components/ui/ScorePill.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
 import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
 import VoiceDimensionBar from '@/components/dashboard/VoiceDimensionBar.vue'
+import BrandAvatar from '@/components/dashboard/BrandAvatar.vue'
 import { PhArrowLeft, PhArrowsClockwise, PhTrash, PhCopy, PhLink } from '@phosphor-icons/vue'
 
 const route = useRoute()
@@ -291,9 +292,6 @@ const recentResults = computed(() => brand.value?.recent_results ?? [])
 const shareToken = computed(() => brand.value?.share_token)
 const shareUrl = computed(() =>
   typeof window !== 'undefined' ? `${window.location.origin}/brief/${shareToken.value}` : '',
-)
-const initials = computed(() =>
-  (brand.value?.name ?? '').split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase(),
 )
 const hostname = computed(() => {
   try { return new URL(brand.value.website_url).hostname.replace('www.', '') } catch { return '' }
@@ -521,16 +519,7 @@ async function copyShareLink() {
 .back-link:hover { color: var(--text-primary); }
 
 .brand-title-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.brand-avatar {
-  display: grid; place-items: center;
-  width: 52px; height: 52px;
-  border-radius: 14px;
-  background: var(--bg-dark);
-  color: var(--text-on-dark);
-  font-size: 17px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
+
 .brand-title h1 { font-family: 'Cabinet Grotesk', sans-serif; font-size: 26px; letter-spacing: -0.3px; }
 .brand-sub { display: flex; align-items: center; gap: 10px; margin-top: 5px; flex-wrap: wrap; }
 .sub-text { font-size: 13px; color: var(--text-muted); }

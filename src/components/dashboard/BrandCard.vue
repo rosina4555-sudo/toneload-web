@@ -1,7 +1,7 @@
 <template>
   <RouterLink :to="`/dashboard/brands/${brand.id}`" class="brand-card">
     <div class="brand-top">
-      <div class="brand-avatar font-display">{{ initials }}</div>
+      <BrandAvatar :name="brand.name" size="sm" />
       <BaseBadge :tone="statusTone" :dot="brand.identity_status === 'building'">{{ statusLabel }}</BaseBadge>
     </div>
 
@@ -21,15 +21,13 @@
 <script setup>
 import { computed } from 'vue'
 import BaseBadge from '@/components/ui/BaseBadge.vue'
+import BrandAvatar from '@/components/dashboard/BrandAvatar.vue'
 import ScorePill from '@/components/ui/ScorePill.vue'
 
 const props = defineProps({
   brand: { type: Object, required: true },
 })
 
-const initials = computed(() =>
-  props.brand.name.split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase(),
-)
 const statusLabel = computed(() => ({
   ready: 'Ready',
   building: 'Building',
@@ -54,7 +52,7 @@ const corpusLabel = computed(() =>
   padding: 20px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 12px;
   text-decoration: none;
   color: inherit;
   transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
@@ -62,20 +60,11 @@ const corpusLabel = computed(() =>
 .brand-card:hover {
   transform: translateY(-2px);
   border-color: var(--border-strong);
-  box-shadow: 0 10px 28px rgba(10, 25, 47, 0.08);
+  box-shadow: 0 6px 20px rgba(10, 25, 47, 0.08);
 }
 
 .brand-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-.brand-avatar {
-  display: grid; place-items: center;
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  background: var(--bg-dark);
-  color: var(--text-on-dark);
-  font-size: 14px;
-  font-weight: 700;
-}
-h3 { font-size: 17px; }
+h3 { font-size: 17px; letter-spacing: -0.2px; }
 .brand-desc {
   font-size: 13px;
   color: var(--text-muted);
@@ -85,6 +74,13 @@ h3 { font-size: 17px; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.brand-meta { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 16px; }
+.brand-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;   /* pin to card bottom */
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
 .meta-text { font-size: 12.5px; color: var(--text-muted); }
 </style>
