@@ -20,6 +20,7 @@
     <div class="main-col">
       <Topbar @toggle-sidebar="mobileOpen = !mobileOpen" />
       <main class="page-container">
+        <Breadcrumbs />
         <RouterView />
       </main>
     </div>
@@ -33,6 +34,7 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SidebarNav from '@/components/dashboard/SidebarNav.vue'
 import Topbar from '@/components/dashboard/Topbar.vue'
+import Breadcrumbs from '@/components/dashboard/Breadcrumbs.vue'
 import ToastHost from '@/components/ui/ToastHost.vue'
 
 const mobileOpen = ref(false)
@@ -71,7 +73,7 @@ watch(() => route.fullPath, () => { mobileOpen.value = false })
   position: fixed;
   inset: 0;
   z-index: 900;
-  background: rgba(26, 24, 20, 0.45);
+  background: rgba(10, 25, 47, 0.45);
 }
 .sidebar--mobile {
   position: fixed;
