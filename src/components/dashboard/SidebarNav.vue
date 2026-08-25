@@ -13,6 +13,7 @@
         :to="item.to"
         class="nav-item"
         :class="{ 'nav-item--active': isActive(item) }"
+        :aria-current="isActive(item) ? 'page' : null"
         active-class=""
         exact-active-class=""
       >
@@ -129,9 +130,10 @@ const planHint = computed(() => ({
 }
 .nav-item:hover { background: var(--bg-surface); color: var(--text-primary); }
 .nav-item.nav-item--active {
-  background: var(--bg-dark);
-  color: var(--text-on-dark);
+  background: var(--brand);
+  color: #fff;
 }
+.nav-item.nav-item--active:hover { background: var(--brand-hover); color: #fff; }
 .nav-badge {
   margin-left: auto;
   font-size: 10.5px;
